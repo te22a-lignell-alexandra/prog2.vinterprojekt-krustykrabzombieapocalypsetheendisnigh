@@ -1,3 +1,6 @@
+using System.ComponentModel.Design;
+using System.Security.Authentication;
+
 public class Character
 {
     private string name;
@@ -16,13 +19,34 @@ public class Character
         currentHp = hp;
 
     }
-    public bool Attack(int dodge)
+    public int Attack(int charType, int dodge)
     {
-        bool success;
         int Hit = Random.Shared.Next(0, hit);
         int Dodge = Random.Shared.Next(0, dodge);
 
-        if (Hit > Dodge) return success = true;
-        else return success = false;
+        if (Hit > Dodge) 
+        {
+            if (charType == 1)
+            {
+                return GetDamage();
+            }
+        }
+        else return 3;
+    }
+    public int GetDodge()
+    {
+        return dodge;
+    }
+    public int GetCurrentHp()
+    {
+        return currentHp;
+    }
+    public int GetInfectionLevel()
+    {
+        return infectionLevel;
+    }
+    public string GetName()
+    {
+        return name;
     }
 }
